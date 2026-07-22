@@ -8,8 +8,8 @@
 -- SECTION 1: DATA EXPLORATION
 -- ============================================
 
--- First thing I want to do is just have a look at each table
--- and get a feel for what the data looks like before I do anything.
+-- First, I want to look at each table and get a feel for the data
+-- before starting any cleaning or analysis.
 
 SELECT * FROM order_items LIMIT 10;
 SELECT * FROM customers LIMIT 10;
@@ -29,10 +29,12 @@ SELECT COUNT(*) AS total_locations FROM geography;
 -- ============================================
 -- SECTION 2: DATA CLEANING
 -- ============================================
+-- Before analysing the data, I want to clean and validate it
+-- to make sure the results are based on consistent data.
 
--- Trimming whitespace from all text columns.
--- I want to make sure there are no extra spaces that could
--- cause issues later when I start joining tables.
+-- Trimming whitespace from text columns.
+-- Extra spaces can cause joins and filtering to behave
+-- unexpectedly, so it's worth cleaning them up first.
 
 UPDATE customers
 SET
@@ -62,9 +64,9 @@ SET
     category     = TRIM(category),
     subcategory  = TRIM(subcategory);
 
--- When I imported the CSV the sales column had floating point
--- precision issues, so rounding to 2 decimal places
--- since we're working with currency.
+-- The imported sales values contained floating point precision
+-- differences, so I'm rounding them to two decimal places
+-- since the values represent currency.
 
 UPDATE order_items
 SET sales = ROUND(sales::numeric, 2);
@@ -92,7 +94,7 @@ FROM orders
 GROUP BY order_id
 HAVING COUNT(*) > 1;
 
--- No duplicates found in either table so nothing to delete here.
+-- No duplicate records were found, so no further cleaning was needed.
 
 
 -- ============================================
@@ -106,7 +108,7 @@ SELECT * FROM order_items
 WHERE sales <= 0;
 
 -- Checking if any orders have a ship date before the order date.
--- That would obviously be a data error.
+-- Any records returned here would indicate a data quality issue.
 
 SELECT * FROM orders
 WHERE ship_date < order_date;
@@ -144,8 +146,8 @@ WHERE o.order_id IS NULL;
 -- ============================================
 
 -- JOIN 1: Orders and Customers
--- Wanted to see which customer placed each order
--- and what segment they fall under.
+-- Bringing all the tables together to view the complete
+-- transaction from customer to product to location.
 
 SELECT 
     o.order_id,
@@ -299,7 +301,8 @@ LIMIT 10;
 
 
 -- Average order value by shipping method.
--- Just wanted to see if there is any pattern here.
+-- Checking whether average order value differs
+-- across shipping methods.
 
 SELECT 
     o.ship_mode,
@@ -380,7 +383,7 @@ ORDER BY total_sales DESC;
 -- ============================================
 
 -- Total sales per year.
--- Wanted to see if there is growth year on year.
+-- Checking how sales change from one year to the next.
 
 SELECT
     EXTRACT(YEAR FROM o.order_date)   AS year,

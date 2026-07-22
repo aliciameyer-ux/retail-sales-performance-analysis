@@ -1,5 +1,5 @@
 -- ============================================
--- Superstore Sales Analysis
+-- Retail Sales Performance Analysis
 -- Author: Alicia Meyer
 -- ============================================
 

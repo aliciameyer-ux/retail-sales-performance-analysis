@@ -44,7 +44,7 @@ Retail sales data is a common business dataset, making it a good opportunity to 
 
 ## Files in This Repository
 
-* `superstore_analysis.sql` - SQL queries covering data exploration, cleaning, validation, joins, aggregation, window functions, and time-based analysis.
+* `retail_sales_analysis.sql` - SQL queries covering data exploration, cleaning, validation, joins, aggregation, window functions, and time-based analysis.
 
 ## Key Findings
 

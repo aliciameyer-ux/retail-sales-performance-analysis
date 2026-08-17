@@ -44,7 +44,10 @@ Built in PostgreSQL using pgAdmin.
 
 The analysis surfaced clear, actionable patterns in the data:
 
-![Sales Dashboard](images/sales_dashboard.png)
+<img width="441" height="304" alt="Screenshot 2026-08-17 at 15 09 33" src="https://github.com/user-attachments/assets/d9d2705f-a7b1-4218-89cd-aa8b0ece3cd7" />
+<img width="449" height="334" alt="Screenshot 2026-08-17 at 15 09 18" src="https://github.com/user-attachments/assets/af955521-1bef-4ede-a22d-3c8b174e34be" />
+<img width="431" height="676" alt="Screenshot 2026-08-17 at 15 08 52" src="https://github.com/user-attachments/assets/3dffe4b8-d6c8-4309-8d16-285ccc70f130" />
+
 
 - **Technology** is the top-performing category by sales, at **$825,529.02**
 - **The West region** outperforms all others, generating **$2,122,657.58** in total sales
